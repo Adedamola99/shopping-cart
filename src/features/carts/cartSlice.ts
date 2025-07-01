@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../../store/store";
-import { loadCartState } from "../../utils/localStorageUtils";
 
 interface CartItem {
   id: number;
@@ -15,9 +14,8 @@ interface CartState {
   items: CartItem[];
 }
 
-// Ensure `loadCartState()` returns an array, defaulting to an empty array if it’s undefined
 const initialState: CartState = {
-  items: loadCartState() || [],
+  items: [],
 };
 
 const cartSlice = createSlice({
@@ -25,8 +23,6 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addItem: (state, action: PayloadAction<CartItem>) => {
-      if (!state.items) state.items = [];
-
       const item = action.payload;
       const existingItem = state.items.find((i) => i.id === item.id);
       if (existingItem) {
@@ -43,25 +39,26 @@ const cartSlice = createSlice({
       action: PayloadAction<{ id: number; quantity: number }>
     ) => {
       const item = state.items.find((item) => item.id === action.payload.id);
-      if (item) {
+      if (item && action.payload.quantity > 0) {
         item.quantity = action.payload.quantity;
+      } else if (item && action.payload.quantity <= 0) {
+        // Remove item if quantity is 0 or less
+        state.items = state.items.filter((i) => i.id !== action.payload.id);
       }
     },
   },
 });
 
-// Selector to get total items count, with a fallback to an empty array
 export const selectTotalItems = (state: RootState) =>
-  (state.cart.items || []).reduce((total, item) => total + item.quantity, 0);
+  state.cart.items.reduce((total, item) => total + item.quantity, 0);
 
-// Selector to get the total cost, with a fallback to an empty array
 export const selectCartTotal = (state: RootState) =>
-  (state.cart.items || []).reduce(
+  state.cart.items.reduce(
     (total, item) => total + item.price * item.quantity,
     0
   );
 
-export const selectCartItem = (state: RootState) => state.cart?.items || [];
+export const selectCartItem = (state: RootState) => state.cart.items;
 
 export const { addItem, removeItem, updateQuantity } = cartSlice.actions;
 export default cartSlice.reducer;
