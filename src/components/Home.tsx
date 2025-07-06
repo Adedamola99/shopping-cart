@@ -1,7 +1,24 @@
+import { useRef, useEffect } from "react";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
 
 const Home: React.FC = () => {
+  const gownStyles = [
+    "Maxi Gown",
+    "A‑Line Gown",
+    "Mermaid Gown",
+    "Sheath Gown",
+    "Ball Gown",
+    "Empire‑Waist Gown",
+    "Slip Gown",
+    "One‑Shoulder Gown",
+    "Off‑Shoulder Gown",
+    "High‑Low Gown",
+  ];
+
+  // Duplicate so we have twice the content
+  const displayList = [...gownStyles, ...gownStyles];
+
   return (
     <div className="min-h-screen">
       <NavBar />
@@ -126,6 +143,22 @@ const Home: React.FC = () => {
           </div>
         </div>
       </section>
+
+      <div className="w-full overflow-hidden whitespace-nowrap">
+        <div className="inline-block animate-marquee">
+          {displayList.map((gown, idx) => (
+            <span
+              key={idx}
+              className="inline-block p-6 text-black text-xl font-semibold"
+            >
+              {gown}
+              {idx !== displayList.length - 1 && (
+                <span className="mx-4 text-pink-400">•</span>
+              )}
+            </span>
+          ))}
+        </div>
+      </div>
       <Footer />
     </div>
   );
