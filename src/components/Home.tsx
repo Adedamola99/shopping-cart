@@ -100,7 +100,7 @@ const Home: React.FC = () => {
                 Use “FIT40” coupon to get 40% flat discount
               </p>
               <h1 className="mt-3 text-4xl font-bold text-gray-900 sm:mt-8 sm:text-5xl xl:text-7xl">
-                Gowns that keeps your fashion sense up to date.
+                Gowns that keeps your fashion style up to date.
               </h1>
 
               <div className="mt-8 sm:mt-12">
