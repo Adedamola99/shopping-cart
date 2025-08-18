@@ -10,6 +10,7 @@ import { useAppDispatch, useAppSelector } from "../store/hook";
 import type { Products } from "../features/products/productSlice";
 import Navbar from "../components/layouts/NavBar";
 import Footer from "../components/layouts/Footer";
+import HeroSection from "../components/layouts/HeroSection";
 
 export default function ShopPage() {
   const dispatch = useAppDispatch();
@@ -63,6 +64,14 @@ export default function ShopPage() {
   return (
     <div>
       <Navbar />
+      <HeroSection
+        title="Seasonal Sales"
+        subtitle="Limited time — curated picks and deep discounts."
+        backgroundUrl="https://source.unsplash.com/1600x900/?vintage,market"
+        heightClass="h-[50vh]"
+        breadcrumb={[{ label: "Home", href: "/" }, { label: "Sales" }]}
+        cta={{ label: "View Deals", href: "/deals" }}
+      />
 
       <div className="flex gap-6 p-6">
         <SidebarFilter

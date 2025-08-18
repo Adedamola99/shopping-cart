@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { selectTotalItems } from "../../features/carts/cartSlice";
+import { RootState } from "../../store/store";
 import {
   FiShoppingCart,
   FiSearch,
@@ -21,7 +22,9 @@ const Navbar = () => {
 
   // Mock data - replace with your Redux selectors
   const cartCount = useSelector(selectTotalItems);
-  const wishlistCount = 5;
+  const wishlistCount = useSelector(
+    (state: RootState) => state.wishlist.items.length
+  );
   const isLoggedIn = false;
 
   const toggleMenu = () => {
@@ -38,7 +41,6 @@ const Navbar = () => {
   };
 
   const menuItems = [
-    { name: "Home", href: "/" },
     { name: "Shop", href: "/shop" },
     { name: "Deals", href: "/deals" },
     { name: "About", href: "/about" },
