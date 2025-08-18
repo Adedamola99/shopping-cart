@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
-import NavBar from "./NavBar";
-import Footer from "./Footer";
+import NavBar from "../components/layouts/NavBar";
+import Footer from "../components/layouts/Footer";
 
 const Home: React.FC = () => {
   const gownStyles = [

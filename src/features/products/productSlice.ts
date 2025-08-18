@@ -1,5 +1,6 @@
+// features/products/productSlice.ts
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { RootState } from "../../store/store";
+// removed: import { RootState } from "../../store/store";
 
 export interface Products {
   id: number;
@@ -62,8 +63,13 @@ const productSlice = createSlice({
   },
 });
 
-export const selectAllProducts = (state: RootState) => state.product.products;
-export const selectProductLoading = (state: RootState) => state.product.loading;
-export const selectProductError = (state: RootState) => state.product.error;
+// Selectors: avoid importing RootState here to prevent circular import.
+// Use `any` or declare local typed shape if you want more strictness.
+export const selectAllProducts = (state: any): Products[] =>
+  state.product.products;
+export const selectProductLoading = (state: any): boolean =>
+  state.product.loading;
+export const selectProductError = (state: any): string | null =>
+  state.product.error;
 
 export default productSlice.reducer;

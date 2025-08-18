@@ -1,17 +1,19 @@
-import { useDispatch, useSelector } from "react-redux";
+// pages/Cart.tsx
+import React from "react";
+import { Link } from "react-router-dom";
+import Navbar from "../components/layouts/NavBar";
+import { useAppDispatch, useAppSelector } from "../store/hook";
 import {
   removeItem,
   selectCartItem,
   selectCartTotal,
   updateQuantity,
 } from "../features/carts/cartSlice";
-import Navbar from "./NavBar";
-import { Link } from "react-router-dom";
 
 const Cart: React.FC = () => {
-  const cartItems = useSelector(selectCartItem);
-  const total = useSelector(selectCartTotal);
-  const dispatch = useDispatch();
+  const cartItems = useAppSelector(selectCartItem);
+  const total = useAppSelector(selectCartTotal);
+  const dispatch = useAppDispatch();
 
   const handleQuantityChange = (id: number, quantity: number) => {
     dispatch(updateQuantity({ id, quantity }));
@@ -40,7 +42,7 @@ const Cart: React.FC = () => {
         ) : (
           <>
             <ul className="mt-4 space-y-6">
-              {cartItems.map((item) => (
+              {cartItems.map((item: any) => (
                 <li
                   key={item.id}
                   className="flex flex-col sm:flex-row items-center gap-4 border-b pb-4"
@@ -87,7 +89,9 @@ const Cart: React.FC = () => {
                 </li>
               ))}
             </ul>
-            <p className="mt-4 font-bold text-xl">Total: ${total.toFixed(2)}</p>
+            <p className="mt-4 font-bold text-xl">
+              Total: ${Number(total).toFixed(2)}
+            </p>
           </>
         )}
       </div>

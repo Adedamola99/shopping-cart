@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { selectTotalItems } from "../features/carts/cartSlice";
+import { selectTotalItems } from "../../features/carts/cartSlice";
 import {
   FiShoppingCart,
   FiSearch,
@@ -39,7 +39,7 @@ const Navbar = () => {
 
   const menuItems = [
     { name: "Home", href: "/" },
-    { name: "Shop", href: "/categories" },
+    { name: "Shop", href: "/shop" },
     { name: "Deals", href: "/deals" },
     { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
@@ -85,7 +85,7 @@ const Navbar = () => {
               href="/"
               className="text-2xl font-bold bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-transparent bg-clip-text"
             >
-              DoFri Thrifts
+              DoFi Closet
             </a>
           </div>
 

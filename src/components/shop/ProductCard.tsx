@@ -1,30 +1,30 @@
+// components/ProductCard.tsx
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch } from "../store/store";
+import { AppDispatch } from "../../store/store";
 import {
   fetchProducts,
   selectAllProducts,
   selectProductLoading,
   selectProductError,
-} from "../features/products/productSlice";
+} from "../../features/products/productSlice";
 import {
   addItem,
   removeItem,
   selectCartItem,
-} from "../features/carts/cartSlice"; // Import removeItem and selectCartItem
-import NavBar from "./NavBar";
+} from "../../features/carts/cartSlice";
+import NavBar from "../layouts/NavBar";
 
-const ProductList: React.FC = () => {
+const ProductCard: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const products = useSelector(selectAllProducts);
   const loading = useSelector(selectProductLoading);
   const error = useSelector(selectProductError);
-  const cartItems = useSelector(selectCartItem); // Get current cart items
+  const cartItems = useSelector(selectCartItem);
 
-  // Function to check if product is already in cart
-  const isInCart = (id: number) => cartItems.some((item) => item.id === id);
+  const isInCart = (id: number) =>
+    cartItems.some((item: any) => item.id === id);
 
-  // Function to add or remove item based on existence in cart
   const toggleCartItem = (
     id: number,
     name: string,
@@ -33,11 +33,10 @@ const ProductList: React.FC = () => {
     image: string
   ) => {
     if (isInCart(id)) {
-      dispatch(removeItem(id)); // If in cart, remove item
+      dispatch(removeItem(id));
     } else {
       dispatch(
         addItem({
-          // If not in cart, add item
           id,
           img: image,
           name,
@@ -111,4 +110,4 @@ const ProductList: React.FC = () => {
   );
 };
 
-export default ProductList;
+export default ProductCard;
