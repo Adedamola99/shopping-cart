@@ -1,7 +1,9 @@
+// src/components/layouts/Navbar.tsx
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { selectTotalItems } from "../../features/carts/cartSlice";
 import { RootState } from "../../store/store";
+import { useNavigate } from "react-router-dom";
 import {
   FiShoppingCart,
   FiSearch,
@@ -20,6 +22,8 @@ const Navbar = () => {
   const [isAccountDropdownOpen, setIsAccountDropdownOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
 
+  const navigate = useNavigate();
+
   // Mock data - replace with your Redux selectors
   const cartCount = useSelector(selectTotalItems);
   const wishlistCount = useSelector(
@@ -35,9 +39,14 @@ const Navbar = () => {
     setIsAccountDropdownOpen(!isAccountDropdownOpen);
   };
 
+  // <--- updated: navigate to /search?q=... instead of console.log
   const handleSearch = (e: any) => {
     if (e) e.preventDefault();
-    console.log("Searching for:", searchQuery);
+    const q = (searchQuery || "").trim();
+    if (!q) return; // ignore empty searches
+    navigate(`/search?q=${encodeURIComponent(q)}`);
+    // optionally keep the search text in the input or clear it:
+    // setSearchQuery("");
   };
 
   const menuItems = [
@@ -118,6 +127,7 @@ const Navbar = () => {
               <button
                 onClick={handleSearch}
                 className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white transition-colors"
+                aria-label="Search"
               >
                 <FiSearch size={18} />
               </button>
@@ -230,6 +240,7 @@ const Navbar = () => {
             <button
               onClick={handleSearch}
               className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white transition-colors"
+              aria-label="Search"
             >
               <FiSearch size={18} />
             </button>
