@@ -9,6 +9,7 @@ import {
 } from "../features/wish/wishlistSlice";
 import { addItem } from "../features/carts/cartSlice";
 import { Link } from "react-router-dom";
+import HeroSection from "../components/layouts/HeroSection";
 
 const Wishlist: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -35,9 +36,16 @@ const Wishlist: React.FC = () => {
   return (
     <>
       <Navbar />
+      <HeroSection
+        title="Your Wishlist"
+        subtitle="Limited time — curated picks and deep discounts."
+        backgroundUrl="https://source.unsplash.com/1600x900/?vintage,market"
+        heightClass="h-[50vh]"
+        breadcrumb={[{ label: "Home", href: "/" }, { label: "Sales" }]}
+        cta={{ label: "View Deals", href: "/deals" }}
+      />
       <div className="p-6 max-w-7xl mx-auto">
         <div className="flex items-center justify-between mb-6">
-          <h1 className="text-3xl font-bold">Your Wishlist</h1>
           {wishlist.length > 0 && (
             <button
               onClick={() => dispatch(clearWishlist())}

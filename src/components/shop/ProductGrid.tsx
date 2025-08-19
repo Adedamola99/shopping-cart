@@ -1,12 +1,12 @@
 // components/shop/ProductGrid.tsx
 import React from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hook";
-import { addItem } from "../../features/carts/cartSlice";
+import { addItem, removeItem } from "../../features/carts/cartSlice";
 import {
   addToWishlist,
   removeFromWishlist,
   selectWishlistItems,
-} from "../../features//wish/wishlistSlice";
+} from "../../features/wish/wishlistSlice";
 import type { Products } from "../../features/products/productSlice";
 
 interface ProductGridProps {
@@ -16,8 +16,10 @@ interface ProductGridProps {
 const ProductGrid: React.FC<ProductGridProps> = ({ products }) => {
   const dispatch = useAppDispatch();
   const wishlist = useAppSelector(selectWishlistItems);
+  const cartItems = useAppSelector((state) => state.cart.items); // use typed selector if available
 
   const isInWishlist = (id: number) => wishlist.some((i: any) => i.id === id);
+  const isInCart = (id: number) => cartItems?.some((c: any) => c.id === id);
 
   const toggleWishlist = (product: Products) => {
     if (isInWishlist(product.id)) {
@@ -35,17 +37,21 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products }) => {
     }
   };
 
-  const addProductToCart = (product: Products) => {
-    dispatch(
-      addItem({
-        id: product.id,
-        img: product.image,
-        name: product.name,
-        price: product.price,
-        description: product.description,
-        quantity: 1,
-      })
-    );
+  const toggleCartItem = (product: Products) => {
+    if (isInCart(product.id)) {
+      dispatch(removeItem(product.id));
+    } else {
+      dispatch(
+        addItem({
+          id: product.id,
+          img: product.image,
+          name: product.name,
+          price: product.price,
+          description: product.description,
+          quantity: 1,
+        })
+      );
+    }
   };
 
   return (
@@ -67,7 +73,6 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products }) => {
             className="absolute top-3 right-3 p-1 rounded-full hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-1"
           >
             {isInWishlist(product.id) ? (
-              // filled heart
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="w-6 h-6 text-red-500"
@@ -79,7 +84,6 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products }) => {
                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6.02 4.02 4 6.5 4c1.74 0 3.41.81 4.5 2.09C12.09 4.81 13.76 4 15.5 4 17.98 4 20 6.02 20 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
               </svg>
             ) : (
-              // outline heart
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="w-6 h-6 text-gray-400"
@@ -117,11 +121,16 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products }) => {
 
           <div className="mt-3 flex gap-2">
             <button
-              onClick={() => addProductToCart(product)}
-              className="flex-1 bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded"
+              onClick={() => toggleCartItem(product)}
+              className={`flex-1 font-bold py-2 px-4 rounded ${
+                isInCart(product.id)
+                  ? "bg-red-500 hover:bg-red-600 text-white"
+                  : "bg-purple-600 hover:bg-purple-700 text-white"
+              }`}
             >
-              Add to Cart
+              {isInCart(product.id) ? "Remove from Cart" : "Add to Cart"}
             </button>
+
             <button
               onClick={() => toggleWishlist(product)}
               className={`px-3 py-2 rounded border ${
