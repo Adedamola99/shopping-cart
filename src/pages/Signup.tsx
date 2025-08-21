@@ -74,7 +74,7 @@ export default function Signup() {
               onChange={(e) => setEmail(e.target.value)}
               className="mt-1 block w-full border rounded px-3 py-2"
               type="email"
-              placeholder="you@example.com"
+              placeholder="you@gmail.com"
             />
           </label>
 
