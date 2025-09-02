@@ -204,9 +204,7 @@ const Footer = () => {
 
               <form action="#" method="POST" className="mt-6">
                 <div>
-                  <label for="email" class="sr-only">
-                    Email
-                  </label>
+                  <label className="sr-only">Email</label>
                   <input
                     type="email"
                     name="email"

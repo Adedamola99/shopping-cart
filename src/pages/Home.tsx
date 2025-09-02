@@ -1,6 +1,11 @@
 import { useRef, useEffect } from "react";
 import NavBar from "../components/layouts/NavBar";
 import Footer from "../components/layouts/Footer";
+import NewsLetter from "../components/pageComponents/Newsletter";
+import FeaturedCategory from "../components/pageComponents/featuredCategory";
+import PromoBanner from "../components/pageComponents/promoBanner";
+// import TopDeals from "../components/pageComponents/topDeals";
+import Testimonial from "../components/pageComponents/testimonial";
 
 const Home: React.FC = () => {
   const gownStyles = [
@@ -159,6 +164,12 @@ const Home: React.FC = () => {
           ))}
         </div>
       </div>
+      <PromoBanner />
+      <NewsLetter />
+      {/* <TopDeals /> */}
+      <FeaturedCategory />
+      <Testimonial />
+      <NewsLetter />
       <Footer />
     </div>
   );
