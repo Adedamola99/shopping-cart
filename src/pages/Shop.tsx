@@ -11,6 +11,7 @@ import type { Products } from "../features/products/productSlice";
 import Navbar from "../components/layouts/NavBar";
 import Footer from "../components/layouts/Footer";
 import HeroSection from "../components/layouts/HeroSection";
+import BackgroundImage from "../asset/images/background-2.jpg";
 
 export default function ShopPage() {
   const dispatch = useAppDispatch();
@@ -40,19 +41,23 @@ export default function ShopPage() {
   }) => {
     let result = [...productList];
 
-    if (filters.category) {
-      result = result.filter((p) => p.category === filters.category);
+    // destructure into local consts so TypeScript can properly narrow types
+    const { category, minPrice, maxPrice, search } = filters;
+
+    if (category) {
+      result = result.filter((p) => p.category === category);
     }
-    if (filters.minPrice !== undefined) {
-      result = result.filter((p) => p.price >= filters.minPrice);
+
+    // Use explicit checks against undefined (or use typeof to ensure a number)
+    if (typeof minPrice === "number") {
+      result = result.filter((p) => p.price >= minPrice);
     }
-    if (filters.maxPrice !== undefined) {
-      result = result.filter((p) => p.price <= filters.maxPrice);
+    if (typeof maxPrice === "number") {
+      result = result.filter((p) => p.price <= maxPrice);
     }
-    if (filters.search) {
-      result = result.filter((p) =>
-        p.name.toLowerCase().includes(filters.search.toLowerCase())
-      );
+    if (search) {
+      const q = search.toLowerCase();
+      result = result.filter((p) => p.name.toLowerCase().includes(q));
     }
 
     setFilteredProducts(result);
@@ -67,7 +72,7 @@ export default function ShopPage() {
       <HeroSection
         title="Seasonal Sales"
         subtitle="Limited time — curated picks and deep discounts."
-        backgroundUrl="https://source.unsplash.com/1600x900/?vintage,market"
+        backgroundUrl={BackgroundImage}
         heightClass="h-[50vh]"
         breadcrumb={[{ label: "Home", href: "/" }, { label: "Sales" }]}
         cta={{ label: "View Deals", href: "/deals" }}

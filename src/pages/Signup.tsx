@@ -4,6 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import AuthCard from "../components/authCard/AuthCard";
 import { registerUser } from "../utils/auth/fakeAuth";
 import Navbar from "../components/layouts/NavBar";
+import Footer from "../components/layouts/Footer";
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -130,6 +131,7 @@ export default function Signup() {
           </div>
         </form>
       </AuthCard>
+      <Footer />
     </>
   );
 }

@@ -10,6 +10,7 @@ import {
 import { addItem } from "../features/carts/cartSlice";
 import { Link } from "react-router-dom";
 import HeroSection from "../components/layouts/HeroSection";
+import BackgroundImage from "../asset/images/background-3.jpg";
 
 const Wishlist: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -39,7 +40,7 @@ const Wishlist: React.FC = () => {
       <HeroSection
         title="Your Wishlist"
         subtitle="Limited time — curated picks and deep discounts."
-        backgroundUrl="https://source.unsplash.com/1600x900/?vintage,market"
+        backgroundUrl={BackgroundImage}
         heightClass="h-[50vh]"
         breadcrumb={[{ label: "Home", href: "/" }, { label: "Sales" }]}
         cta={{ label: "View Deals", href: "/deals" }}

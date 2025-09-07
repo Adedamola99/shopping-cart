@@ -6,6 +6,8 @@ import { useAppDispatch, useAppSelector } from "../store/hook";
 import { selectCartItem, selectCartTotal } from "../features/carts/cartSlice";
 import { clearCart } from "../features/carts/cartSlice";
 import HeroSection from "../components/layouts/HeroSection";
+import Footer from "../components/layouts/Footer";
+import BackgroundImage from "../asset/images/background-6.jpg";
 
 type ShippingMethod = {
   id: string;
@@ -156,241 +158,253 @@ export default function Checkout() {
   }
 
   return (
-    <>
+    <div>
       <Navbar />
-      <HeroSection />
-      <main className="p-6 max-w-6xl mx-auto">
-        <h1 className="text-2xl font-bold mb-4">Checkout</h1>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* left: form */}
-          <form
-            className="lg:col-span-2 space-y-6 bg-white p-6 rounded shadow"
-            onSubmit={handlePlaceOrder}
-          >
-            <section>
-              <h2 className="font-semibold mb-3">Contact & Shipping</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                <input
-                  value={fullName}
-                  onChange={(e) => setFullName(e.target.value)}
-                  placeholder="Full name"
-                  className="border p-2 rounded"
-                />
-                <input
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Email"
-                  className="border p-2 rounded"
-                />
-                <input
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  placeholder="Phone"
-                  className="border p-2 rounded"
-                />
-                <input
-                  value={postalCode}
-                  onChange={(e) => setPostalCode(e.target.value)}
-                  placeholder="Postal code"
-                  className="border p-2 rounded"
-                />
-              </div>
-
-              <div className="mt-4 grid grid-cols-1 gap-3">
-                <input
-                  value={address1}
-                  onChange={(e) => setAddress1(e.target.value)}
-                  placeholder="Address line 1"
-                  className="border p-2 rounded"
-                />
-                <input
-                  value={address2}
-                  onChange={(e) => setAddress2(e.target.value)}
-                  placeholder="Address line 2 (optional)"
-                  className="border p-2 rounded"
-                />
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+      <HeroSection
+        title="Checkout"
+        subtitle="Pay the Bills"
+        backgroundUrl={BackgroundImage}
+        breadcrumb={[{ label: "Home", href: "/" }, { label: "Cart" }]}
+        cta={{ label: "Shop All", href: "/shop" }}
+        heightClass="h-[44vh]"
+      />
+      <div className="p-4 max-w-6xl mx-auto">
+        <h2 className="text-2xl font-bold"></h2>
+        <main className="p-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {/* left: form */}
+            <form
+              className="lg:col-span-2 space-y-6 bg-white p-6 rounded shadow"
+              onSubmit={handlePlaceOrder}
+            >
+              <section>
+                <h2 className="font-semibold mb-3">Contact & Shipping</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   <input
-                    value={city}
-                    onChange={(e) => setCity(e.target.value)}
-                    placeholder="City"
+                    value={fullName}
+                    onChange={(e) => setFullName(e.target.value)}
+                    placeholder="Full name"
                     className="border p-2 rounded"
                   />
                   <input
-                    value={stateRegion}
-                    onChange={(e) => setStateRegion(e.target.value)}
-                    placeholder="State/Region"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Email"
                     className="border p-2 rounded"
                   />
                   <input
-                    value={country}
-                    onChange={(e) => setCountry(e.target.value)}
-                    placeholder="Country"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    placeholder="Phone"
+                    className="border p-2 rounded"
+                  />
+                  <input
+                    value={postalCode}
+                    onChange={(e) => setPostalCode(e.target.value)}
+                    placeholder="Postal code"
                     className="border p-2 rounded"
                   />
                 </div>
-              </div>
-            </section>
 
-            <section>
-              <h2 className="font-semibold mb-3">Shipping Method</h2>
-              <div className="space-y-2">
-                {shippingMethods.map((s) => (
+                <div className="mt-4 grid grid-cols-1 gap-3">
+                  <input
+                    value={address1}
+                    onChange={(e) => setAddress1(e.target.value)}
+                    placeholder="Address line 1"
+                    className="border p-2 rounded"
+                  />
+                  <input
+                    value={address2}
+                    onChange={(e) => setAddress2(e.target.value)}
+                    placeholder="Address line 2 (optional)"
+                    className="border p-2 rounded"
+                  />
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                    <input
+                      value={city}
+                      onChange={(e) => setCity(e.target.value)}
+                      placeholder="City"
+                      className="border p-2 rounded"
+                    />
+                    <input
+                      value={stateRegion}
+                      onChange={(e) => setStateRegion(e.target.value)}
+                      placeholder="State/Region"
+                      className="border p-2 rounded"
+                    />
+                    <input
+                      value={country}
+                      onChange={(e) => setCountry(e.target.value)}
+                      placeholder="Country"
+                      className="border p-2 rounded"
+                    />
+                  </div>
+                </div>
+              </section>
+
+              <section>
+                <h2 className="font-semibold mb-3">Shipping Method</h2>
+                <div className="space-y-2">
+                  {shippingMethods.map((s) => (
+                    <label
+                      key={s.id}
+                      className="flex items-center gap-3 p-3 border rounded"
+                    >
+                      <input
+                        type="radio"
+                        name="shipping"
+                        checked={shippingId === s.id}
+                        onChange={() => setShippingId(s.id)}
+                      />
+                      <div>
+                        <div className="font-medium">{s.label}</div>
+                        <div className="text-sm text-gray-500">
+                          {s.eta} • ${s.price}
+                        </div>
+                      </div>
+                    </label>
+                  ))}
+                </div>
+              </section>
+
+              <section>
+                <h2 className="font-semibold mb-3">Payment</h2>
+                <div className="flex gap-3 mb-3">
                   <label
-                    key={s.id}
-                    className="flex items-center gap-3 p-3 border rounded"
+                    className={`px-4 py-2 border rounded cursor-pointer ${
+                      paymentMethod === "card" ? "ring-2 ring-purple-400" : ""
+                    }`}
                   >
                     <input
+                      className="hidden"
                       type="radio"
-                      name="shipping"
-                      checked={shippingId === s.id}
-                      onChange={() => setShippingId(s.id)}
+                      name="pm"
+                      checked={paymentMethod === "card"}
+                      onChange={() => setPaymentMethod("card")}
                     />
-                    <div>
-                      <div className="font-medium">{s.label}</div>
-                      <div className="text-sm text-gray-500">
-                        {s.eta} • ${s.price}
-                      </div>
-                    </div>
+                    Card (Fake)
                   </label>
-                ))}
-              </div>
-            </section>
+                  <label
+                    className={`px-4 py-2 border rounded cursor-pointer ${
+                      paymentMethod === "paypal" ? "ring-2 ring-purple-400" : ""
+                    }`}
+                  >
+                    <input
+                      className="hidden"
+                      type="radio"
+                      name="pm"
+                      checked={paymentMethod === "paypal"}
+                      onChange={() => setPaymentMethod("paypal")}
+                    />
+                    PayPal (Fake)
+                  </label>
+                </div>
 
-            <section>
-              <h2 className="font-semibold mb-3">Payment</h2>
-              <div className="flex gap-3 mb-3">
-                <label
-                  className={`px-4 py-2 border rounded cursor-pointer ${
-                    paymentMethod === "card" ? "ring-2 ring-purple-400" : ""
-                  }`}
-                >
-                  <input
-                    className="hidden"
-                    type="radio"
-                    name="pm"
-                    checked={paymentMethod === "card"}
-                    onChange={() => setPaymentMethod("card")}
-                  />
-                  Card (Fake)
-                </label>
-                <label
-                  className={`px-4 py-2 border rounded cursor-pointer ${
-                    paymentMethod === "paypal" ? "ring-2 ring-purple-400" : ""
-                  }`}
-                >
-                  <input
-                    className="hidden"
-                    type="radio"
-                    name="pm"
-                    checked={paymentMethod === "paypal"}
-                    onChange={() => setPaymentMethod("paypal")}
-                  />
-                  PayPal (Fake)
-                </label>
-              </div>
+                {paymentMethod === "card" && (
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                    <input
+                      value={cardNumber}
+                      onChange={(e) => setCardNumber(e.target.value)}
+                      placeholder="Card number (digits only)"
+                      className="border p-2 rounded md:col-span-2"
+                    />
+                    <input
+                      value={cardExpiry}
+                      onChange={(e) => setCardExpiry(e.target.value)}
+                      placeholder="MM/YY"
+                      className="border p-2 rounded"
+                    />
+                    <input
+                      value={cardCvv}
+                      onChange={(e) => setCardCvv(e.target.value)}
+                      placeholder="CVV"
+                      className="border p-2 rounded md:col-span-1"
+                    />
+                  </div>
+                )}
+              </section>
 
-              {paymentMethod === "card" && (
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                  <input
-                    value={cardNumber}
-                    onChange={(e) => setCardNumber(e.target.value)}
-                    placeholder="Card number (digits only)"
-                    className="border p-2 rounded md:col-span-2"
-                  />
-                  <input
-                    value={cardExpiry}
-                    onChange={(e) => setCardExpiry(e.target.value)}
-                    placeholder="MM/YY"
-                    className="border p-2 rounded"
-                  />
-                  <input
-                    value={cardCvv}
-                    onChange={(e) => setCardCvv(e.target.value)}
-                    placeholder="CVV"
-                    className="border p-2 rounded md:col-span-1"
-                  />
+              {errors && (
+                <div className="text-red-600 bg-red-50 p-3 rounded">
+                  {errors}
                 </div>
               )}
-            </section>
 
-            {errors && (
-              <div className="text-red-600 bg-red-50 p-3 rounded">{errors}</div>
-            )}
+              <div className="flex items-center justify-between gap-3">
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="bg-purple-600 hover:bg-purple-700 text-white px-5 py-2 rounded font-semibold disabled:opacity-60"
+                >
+                  {loading ? "Processing..." : "Place Order (Fake)"}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    // quick debug: prefill data for testing
+                    setFullName("Test User");
+                    setEmail("test@example.com");
+                    setPhone("+123456789");
+                    setAddress1("12 Test Road");
+                    setCity("Lagos");
+                    setPostalCode("100001");
+                    setCountry("Nigeria");
+                  }}
+                  className="text-sm text-gray-500 underline"
+                >
+                  Auto-fill test
+                </button>
+              </div>
+            </form>
 
-            <div className="flex items-center justify-between gap-3">
-              <button
-                type="submit"
-                disabled={loading}
-                className="bg-purple-600 hover:bg-purple-700 text-white px-5 py-2 rounded font-semibold disabled:opacity-60"
-              >
-                {loading ? "Processing..." : "Place Order (Fake)"}
-              </button>
-              <button
-                type="button"
-                onClick={() => {
-                  // quick debug: prefill data for testing
-                  setFullName("Test User");
-                  setEmail("test@example.com");
-                  setPhone("+123456789");
-                  setAddress1("12 Test Road");
-                  setCity("Lagos");
-                  setPostalCode("100001");
-                  setCountry("Nigeria");
-                }}
-                className="text-sm text-gray-500 underline"
-              >
-                Auto-fill test
-              </button>
-            </div>
-          </form>
-
-          {/* right: summary */}
-          <aside className="bg-white p-6 rounded shadow">
-            <h3 className="font-semibold mb-4">Order Summary</h3>
-            <div className="space-y-4">
-              {cartItems.map((it: any) => (
-                <div key={it.id} className="flex items-center gap-3">
-                  <img
-                    src={it.img}
-                    alt={it.name}
-                    className="w-14 h-14 object-cover rounded"
-                  />
-                  <div className="flex-1">
-                    <div className="font-medium">{it.name}</div>
-                    <div className="text-sm text-gray-500">
-                      x{it.quantity} • ${it.price}
+            {/* right: summary */}
+            <aside className="bg-white p-6 rounded shadow">
+              <h3 className="font-semibold mb-4">Order Summary</h3>
+              <div className="space-y-4">
+                {cartItems.map((it: any) => (
+                  <div key={it.id} className="flex items-center gap-3">
+                    <img
+                      src={it.img}
+                      alt={it.name}
+                      className="w-14 h-14 object-cover rounded"
+                    />
+                    <div className="flex-1">
+                      <div className="font-medium">{it.name}</div>
+                      <div className="text-sm text-gray-500">
+                        x{it.quantity} • ${it.price}
+                      </div>
+                    </div>
+                    <div className="font-semibold">
+                      ${(it.price * it.quantity).toFixed(2)}
                     </div>
                   </div>
-                  <div className="font-semibold">
-                    ${(it.price * it.quantity).toFixed(2)}
-                  </div>
+                ))}
+              </div>
+
+              <div className="border-t my-4 pt-4 space-y-2 text-sm">
+                <div className="flex justify-between">
+                  <span>Subtotal</span>
+                  <span>${Number(cartTotal).toFixed(2)}</span>
                 </div>
-              ))}
-            </div>
+                <div className="flex justify-between">
+                  <span>Shipping</span>
+                  <span>${shipping.price.toFixed(2)}</span>
+                </div>
+                <div className="flex justify-between font-bold text-lg">
+                  <span>Total</span>
+                  <span>${Number(totalWithShipping).toFixed(2)}</span>
+                </div>
+              </div>
 
-            <div className="border-t my-4 pt-4 space-y-2 text-sm">
-              <div className="flex justify-between">
-                <span>Subtotal</span>
-                <span>${Number(cartTotal).toFixed(2)}</span>
+              <div className="text-xs text-gray-500">
+                This is a demo checkout — payments are simulated and no real
+                transaction will occur.
               </div>
-              <div className="flex justify-between">
-                <span>Shipping</span>
-                <span>${shipping.price.toFixed(2)}</span>
-              </div>
-              <div className="flex justify-between font-bold text-lg">
-                <span>Total</span>
-                <span>${Number(totalWithShipping).toFixed(2)}</span>
-              </div>
-            </div>
-
-            <div className="text-xs text-gray-500">
-              This is a demo checkout — payments are simulated and no real
-              transaction will occur.
-            </div>
-          </aside>
-        </div>
-      </main>
-    </>
+            </aside>
+          </div>
+        </main>
+      </div>
+      <Footer />
+    </div>
   );
 }

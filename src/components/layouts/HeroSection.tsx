@@ -34,13 +34,10 @@ interface HeroSectionProps {
 export default function HeroSection({
   title = "Page Title",
   subtitle,
-  backgroundUrl = "https://source.unsplash.com/1600x900/?thrift,clothes",
+  backgroundUrl,
   heightClass = "h-[60vh]",
   breadcrumb = [],
   cta = null,
-  overlayColor = "#000000",
-  overlayStartOpacity = 0.32,
-  overlayEndOpacity = 0.56,
   children,
   className = "",
   backgroundPosition = "center center",
@@ -156,9 +153,7 @@ export default function HeroSection({
         className="absolute inset-0"
         aria-hidden="true"
         style={{
-          background: `linear-gradient(180deg, ${overlayColor} ${Math.round(
-            overlayStartOpacity * 100
-          )}%, ${overlayColor} ${Math.round(overlayEndOpacity * 100)}%)`,
+          background: `linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,1) 100%)`,
           opacity: 1,
         }}
       />

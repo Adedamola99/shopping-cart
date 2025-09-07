@@ -2,6 +2,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/layouts/NavBar";
+import HeroSection from "../components/layouts/HeroSection";
+import BackgroundImage from "../asset/images/background-6.jpg";
 import { useAppDispatch, useAppSelector } from "../store/hook";
 import {
   removeItem,
@@ -9,6 +11,7 @@ import {
   selectCartTotal,
   updateQuantity,
 } from "../features/carts/cartSlice";
+import Footer from "../components/layouts/Footer";
 
 const Cart: React.FC = () => {
   const cartItems = useAppSelector(selectCartItem);
@@ -26,8 +29,16 @@ const Cart: React.FC = () => {
   return (
     <>
       <Navbar />
+      <HeroSection
+        title="Your Shopping Cart"
+        subtitle="Checkout your picks from our collection."
+        backgroundUrl={BackgroundImage}
+        breadcrumb={[{ label: "Home", href: "/" }, { label: "Cart" }]}
+        cta={{ label: "Shop All", href: "/shop" }}
+        heightClass="h-[44vh]"
+      />
       <div className="p-4 max-w-6xl mx-auto">
-        <h2 className="text-2xl font-bold">Your Shopping Cart</h2>
+        <h2 className="text-2xl font-bold"></h2>
 
         {cartItems.length === 0 ? (
           <div className="mt-8 flex flex-col items-center">
@@ -162,6 +173,7 @@ const Cart: React.FC = () => {
           </Link>
         </div>
       )}
+      <Footer />
     </>
   );
 };

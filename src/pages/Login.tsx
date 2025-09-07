@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import AuthCard from "../components/authCard/AuthCard";
 import { loginUser } from "../utils/auth/fakeAuth";
 import Navbar from "../components/layouts/NavBar";
+import Footer from "../components/layouts/Footer";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -141,6 +142,7 @@ export default function Login() {
           </div>
         </form>
       </AuthCard>
+      <Footer />
     </>
   );
 }
