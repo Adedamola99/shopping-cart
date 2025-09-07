@@ -44,4 +44,3 @@ export const { addToWishlist, removeFromWishlist, clearWishlist } =
   wishlistSlice.actions;
 
 export default wishlistSlice.reducer;
-export type { WishlistItem };

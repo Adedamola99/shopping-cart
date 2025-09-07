@@ -16,7 +16,7 @@ function loadFromLocalStorage(key: string) {
   }
 }
 
-const preloadedState: any = {
+const preloadedState = {
   cart: { items: loadFromLocalStorage("cartState") ?? [] },
   wishlist: { items: loadFromLocalStorage("wishlistState") ?? [] },
 };
