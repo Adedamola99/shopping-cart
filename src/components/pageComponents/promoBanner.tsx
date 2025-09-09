@@ -13,15 +13,17 @@ const PromoBanner: React.FC = () => (
         </p>
       </div>
       <div className="flex items-center gap-3">
-        <Link to="/shop">
-          <a className="bg-white text-gray-900 px-4 py-2 rounded-md font-semibold shadow">
-            Shop Now
-          </a>
+        <Link
+          to="/shop"
+          className="bg-white text-gray-900 px-4 py-2 rounded-md font-semibold shadow"
+        >
+          Shop Now
         </Link>
-        <Link to="/deals">
-          <a className="border border-white/30 px-4 py-2 rounded-md text-sm">
-            View Deals
-          </a>
+        <Link
+          to="/deals"
+          className="border border-white/30 px-4 py-2 rounded-md text-sm"
+        >
+          View Deals
         </Link>
       </div>
     </div>

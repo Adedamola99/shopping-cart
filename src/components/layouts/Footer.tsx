@@ -1,5 +1,6 @@
 // src/components/Footer.tsx
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 interface FooterProps {
   variant?: "default" | "modern" | "minimal";
@@ -88,14 +89,14 @@ const Footer: React.FC<FooterProps> = ({
             <div className="flex items-center gap-4">
               <div className="flex gap-3">
                 {socialIcons.map((social) => (
-                  <a
+                  <Link
                     key={social.name}
-                    href={social.href}
+                    to={social.href}
                     className="text-gray-400 hover:text-purple-600 transition-colors"
                     aria-label={social.name}
                   >
                     {social.icon}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -127,12 +128,12 @@ const Footer: React.FC<FooterProps> = ({
                 <ul className="flex items-center space-x-3 mt-9">
                   {socialIcons.map((social) => (
                     <li key={social.name}>
-                      <a
-                        href={social.href}
+                      <Link
+                        to={social.href}
                         className="flex items-center justify-center text-white transition-all duration-200 bg-gray-800 rounded-full w-7 h-7 hover:bg-blue-600 focus:bg-blue-600"
                       >
                         {social.icon}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -144,36 +145,36 @@ const Footer: React.FC<FooterProps> = ({
                 </p>
                 <ul className="mt-6 space-y-4">
                   <li>
-                    <a
-                      href="/about"
+                    <Link
+                      to="/about"
                       className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
                     >
                       About
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      href="#"
+                    <Link
+                      to="#"
                       className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
                     >
                       Features
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      href="/works"
+                    <Link
+                      to="/works"
                       className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
                     >
                       Works
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      href="#"
+                    <Link
+                      to="#"
                       className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
                     >
                       Career
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -184,36 +185,36 @@ const Footer: React.FC<FooterProps> = ({
                 </p>
                 <ul className="mt-6 space-y-4">
                   <li>
-                    <a
-                      href="#"
+                    <Link
+                      to="#"
                       className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
                     >
                       Customer Support
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      href="#"
+                    <Link
+                      to="#"
                       className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
                     >
                       Delivery Details
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      href="#"
+                    <Link
+                      to="#"
                       className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
                     >
                       Terms & Conditions
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      href="#"
+                    <Link
+                      to="#"
                       className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
                     >
                       Privacy Policy
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -276,7 +277,7 @@ const Footer: React.FC<FooterProps> = ({
               <div className="mb-8">
                 <h2 className="text-4xl font-black text-white mb-4">
                   <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                    DoFi
+                    DoFee
                   </span>{" "}
                   <span className="text-white">Closet</span>
                 </h2>
@@ -309,14 +310,14 @@ const Footer: React.FC<FooterProps> = ({
                 </span>
                 <div className="flex gap-3">
                   {socialIcons.map((social) => (
-                    <a
+                    <Link
                       key={social.name}
-                      href={social.href}
+                      to={social.href}
                       className="group w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center text-gray-400 hover:text-white hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 transition-all duration-300 transform hover:-translate-y-1"
                       aria-label={social.name}
                     >
                       {social.icon}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -340,13 +341,13 @@ const Footer: React.FC<FooterProps> = ({
                       { label: "Events", href: "/events" },
                     ].map((link) => (
                       <li key={link.label}>
-                        <a
-                          href={link.href}
+                        <Link
+                          to={link.href}
                           className="group text-gray-300 hover:text-white transition-all duration-300 flex items-center"
                         >
                           <span className="w-0 group-hover:w-4 h-px bg-gradient-to-r from-purple-400 to-pink-400 transition-all duration-300 mr-0 group-hover:mr-3"></span>
                           {link.label}
-                        </a>
+                        </Link>
                       </li>
                     ))}
                   </ul>
@@ -367,13 +368,13 @@ const Footer: React.FC<FooterProps> = ({
                       { label: "FAQ", href: "/faq" },
                     ].map((link) => (
                       <li key={link.label}>
-                        <a
-                          href={link.href}
+                        <Link
+                          to={link.href}
                           className="group text-gray-300 hover:text-white transition-all duration-300 flex items-center"
                         >
                           <span className="w-0 group-hover:w-4 h-px bg-gradient-to-r from-purple-400 to-pink-400 transition-all duration-300 mr-0 group-hover:mr-3"></span>
                           {link.label}
-                        </a>
+                        </Link>
                       </li>
                     ))}
                   </ul>
@@ -506,24 +507,24 @@ const Footer: React.FC<FooterProps> = ({
                 © 2025 DoFi Closet. All rights reserved. Made with ❤️ in Nigeria
               </div>
               <div className="flex items-center gap-6 text-sm">
-                <a
-                  href="/privacy"
+                <Link
+                  to="/privacy"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
                   Privacy Policy
-                </a>
-                <a
-                  href="/terms"
+                </Link>
+                <Link
+                  to="/terms"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
                   Terms of Service
-                </a>
-                <a
-                  href="/cookies"
+                </Link>
+                <Link
+                  to="/cookies"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
                   Cookie Policy
-                </a>
+                </Link>
               </div>
             </div>
           </div>

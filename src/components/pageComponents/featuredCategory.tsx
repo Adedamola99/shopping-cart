@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const FeaturedCategories: React.FC = () => {
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
@@ -105,9 +106,9 @@ const FeaturedCategories: React.FC = () => {
         {/* Categories Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
           {categories.map((category, index) => (
-            <a
+            <Link
               key={category.name}
-              href={`/category/${category.name
+              to={`/category/${category.name
                 .toLowerCase()
                 .replace(/\s+/g, "-")}`}
               className={`group relative bg-white/80 backdrop-blur-sm rounded-3xl shadow-lg hover:shadow-2xl border border-white/50 p-6 flex flex-col items-center text-center transition-all duration-500 hover:scale-105 hover:-translate-y-2 transform ${
@@ -182,7 +183,7 @@ const FeaturedCategories: React.FC = () => {
               {/* Floating Elements */}
               <div className="absolute -top-1 -right-1 w-6 h-6 bg-gradient-to-r from-purple-300/30 to-pink-300/30 rounded-full blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="absolute -bottom-1 -left-1 w-4 h-4 bg-gradient-to-r from-pink-300/30 to-purple-300/30 rounded-full blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            </a>
+            </Link>
           ))}
         </div>
 

@@ -124,9 +124,9 @@ export default function Signup() {
 
           <div className="text-xs text-slate-500">
             By creating an account you agree to our{" "}
-            <a href="#" className="text-purple-600">
+            <Link to="#" className="text-purple-600">
               Terms
-            </a>
+            </Link>
             .
           </div>
         </form>

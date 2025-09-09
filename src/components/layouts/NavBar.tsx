@@ -92,12 +92,12 @@ const Navbar = () => {
               {isMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
             </button>
 
-            <a
-              href="/"
+            <Link
+              to="/"
               className="text-2xl font-bold bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-transparent bg-clip-text"
             >
-              DoFi Closet
-            </a>
+              DoFee Closet
+            </Link>
           </div>
 
           {/* Desktop Navigation Menu */}
@@ -155,24 +155,24 @@ const Navbar = () => {
                 <div className="absolute right-0 mt-2 w-48 bg-white text-gray-800 rounded-lg shadow-lg z-50 py-2">
                   {isLoggedIn ? (
                     <>
-                      <a
-                        href="/profile"
+                      <Link
+                        to="/profile"
                         className="block px-4 py-2 hover:bg-gray-100 transition-colors"
                       >
                         My Profile
-                      </a>
-                      <a
-                        href="/orders"
+                      </Link>
+                      <Link
+                        to="/orders"
                         className="block px-4 py-2 hover:bg-gray-100 transition-colors"
                       >
                         My Orders
-                      </a>
-                      <a
-                        href="/addresses"
+                      </Link>
+                      <Link
+                        to="/addresses"
                         className="block px-4 py-2 hover:bg-gray-100 transition-colors"
                       >
                         Addresses
-                      </a>
+                      </Link>
                       <hr className="my-2" />
                       <button className="block w-full text-left px-4 py-2 hover:bg-gray-100 transition-colors">
                         Sign Out
@@ -180,18 +180,18 @@ const Navbar = () => {
                     </>
                   ) : (
                     <>
-                      <a
-                        href="/login"
+                      <Link
+                        to="/login"
                         className="block px-4 py-2 hover:bg-gray-100 transition-colors"
                       >
                         Sign In
-                      </a>
-                      <a
-                        href="/register"
+                      </Link>
+                      <Link
+                        to="/register"
                         className="block px-4 py-2 hover:bg-gray-100 transition-colors"
                       >
                         Create Account
-                      </a>
+                      </Link>
                     </>
                   )}
                 </div>
@@ -199,8 +199,8 @@ const Navbar = () => {
             </div>
 
             {/* Wishlist */}
-            <a
-              href="/wishlist"
+            <Link
+              to="/wishlist"
               className="relative p-2 rounded-lg hover:bg-gray-800 transition-colors"
             >
               <FiHeart size={20} />
@@ -209,11 +209,11 @@ const Navbar = () => {
                   {wishlistCount}
                 </span>
               )}
-            </a>
+            </Link>
 
             {/* Cart */}
-            <a
-              href="/cart"
+            <Link
+              to="/cart"
               className="relative p-2 rounded-lg hover:bg-gray-800 transition-colors"
             >
               <FiShoppingCart size={20} />
@@ -222,7 +222,7 @@ const Navbar = () => {
                   {cartCount}
                 </span>
               )}
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -277,14 +277,14 @@ const Navbar = () => {
 
           <nav className="space-y-4">
             {menuItems.map((item) => (
-              <a
+              <Link
                 key={item.name}
-                href={item.href}
+                to={item.href}
                 className="block py-3 px-4 rounded-lg hover:bg-gray-800 transition-colors"
                 onClick={toggleMenu}
               >
                 {item.name}
-              </a>
+              </Link>
             ))}
           </nav>
 

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useRef, useEffect, useState } from "react";
 import NavBar from "../components/layouts/NavBar";
 import Footer from "../components/layouts/Footer";
@@ -129,8 +130,8 @@ const Home: React.FC = () => {
 
                 {/* CTA Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <a
-                    href="#"
+                  <Link
+                    to="#"
                     className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
                   >
                     <span className="relative z-10">Start shopping</span>
@@ -148,10 +149,10 @@ const Home: React.FC = () => {
                         d="M17 8l4 4m0 0l-4 4m4-4H3"
                       />
                     </svg>
-                  </a>
+                  </Link>
 
-                  <a
-                    href="#"
+                  <Link
+                    to="#"
                     className="group inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-slate-700 bg-white border-2 border-slate-200 rounded-2xl hover:border-purple-300 hover:text-purple-600 transition-all duration-300 hover:shadow-lg"
                   >
                     View Collection
@@ -174,7 +175,7 @@ const Home: React.FC = () => {
                         d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
                       />
                     </svg>
-                  </a>
+                  </Link>
                 </div>
 
                 {/* Trust Indicators */}

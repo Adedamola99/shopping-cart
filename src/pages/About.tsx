@@ -31,24 +31,24 @@ const TeamMember: React.FC<{ name: string; role: string; img: string }> = ({
       </h4>
       <p className="text-purple-600 font-medium mt-2">{role}</p>
       <div className="mt-6 flex gap-4 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
-        <a
+        <Link
           aria-label="twitter"
-          href="#"
+          to="#"
           className="p-2 rounded-full bg-gray-100 hover:bg-purple-100 text-gray-600 hover:text-purple-600 transition-all duration-300"
         >
           <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
             <path d="M22 5.92c-.64.28-1.33.47-2.05.56a3.6 3.6 0 001.58-1.98 7.2 7.2 0 01-2.28.87 3.58 3.58 0 00-6.1 3.26A10.16 10.16 0 013 4.8a3.57 3.57 0 001.11 4.77 3.5 3.5 0 01-1.62-.45v.05a3.58 3.58 0 002.87 3.51c-.34.09-.69.14-1.06.14-.26 0-.52-.03-.78-.07a3.58 3.58 0 003.34 2.49A7.18 7.18 0 012 19.54a10.12 10.12 0 005.5 1.61c6.6 0 10.21-5.47 10.21-10.21v-.46A7.24 7.24 0 0022 5.92z" />
           </svg>
-        </a>
-        <a
+        </Link>
+        <Link
           aria-label="instagram"
-          href="#"
+          to="#"
           className="p-2 rounded-full bg-gray-100 hover:bg-purple-100 text-gray-600 hover:text-purple-600 transition-all duration-300"
         >
           <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
             <path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm0 2a3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H7zM12 7.8a4.2 4.2 0 110 8.4 4.2 4.2 0 010-8.4zM12 9a2.8 2.8 0 100 5.6A2.8 2.8 0 0012 9z" />
           </svg>
-        </a>
+        </Link>
       </div>
     </div>
   </div>

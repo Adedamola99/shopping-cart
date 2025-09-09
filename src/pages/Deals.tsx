@@ -82,7 +82,7 @@ export default function Deals() {
         heightClass="h-[44vh]"
       />
 
-      <main className="max-w-7xl mx-auto px-6 lg:px-8 -mt-10 relative z-10">
+      <main className="max-w-7xl mx-auto py-24 px-6 lg:px-8 -mt-10 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
           {/* Filters */}
           <aside className="lg:col-span-1">

@@ -65,14 +65,14 @@ export default function HeroSection({
                     </Link>
                   ) : (
                     // external
-                    <a
-                      href={b.href}
+                    <Link
+                      to={b.href}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="hover:underline"
                     >
                       {b.label}
-                    </a>
+                    </Link>
                   )
                 ) : (
                   <span>{b.label}</span>
@@ -118,15 +118,15 @@ export default function HeroSection({
           {cta.label}
         </Link>
       ) : (
-        <a
-          href={cta.href}
+        <Link
+          to={cta.href}
           className={btnClass}
           onClick={cta.onClick}
           target="_blank"
           rel="noopener noreferrer"
         >
           {cta.label}
-        </a>
+        </Link>
       );
     }
 

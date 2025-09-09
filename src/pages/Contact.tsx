@@ -14,6 +14,7 @@ import Navbar from "../components/layouts/NavBar";
 import HeroSection from "../components/layouts/HeroSection";
 import Footer from "../components/layouts/Footer";
 import BackgroundImage from "../asset/images/background-4.jpg";
+import { Link } from "react-router-dom";
 
 type FormState = {
   name: string;
@@ -282,12 +283,12 @@ export default function Contact(): JSX.Element {
                   </div>
                   <div>
                     <div className="font-semibold text-slate-900">Phone</div>
-                    <a
-                      href="tel:+15551234567"
+                    <Link
+                      to="tel:+15551234567"
                       className="text-slate-600 hover:text-purple-600 transition-colors"
                     >
                       +1 (555) 123-4567
-                    </a>
+                    </Link>
                   </div>
                 </div>
 
@@ -297,12 +298,12 @@ export default function Contact(): JSX.Element {
                   </div>
                   <div>
                     <div className="font-semibold text-slate-900">Email</div>
-                    <a
-                      href="mailto:support@doficloset.com"
+                    <Link
+                      to="mailto:support@doficloset.com"
                       className="text-slate-600 hover:text-purple-600 transition-colors"
                     >
                       support@doficloset.com
-                    </a>
+                    </Link>
                   </div>
                 </div>
 
@@ -363,15 +364,15 @@ export default function Contact(): JSX.Element {
                 />
               </div>
 
-              <a
-                href="https://www.google.com/maps"
+              <Link
+                to="https://www.google.com/maps"
                 target="_blank"
                 rel="noreferrer"
                 className="mt-4 inline-flex items-center gap-2 text-purple-600 hover:text-purple-700 font-medium group"
               >
                 View on Google Maps
                 <FiExternalLink className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </a>
+              </Link>
             </div>
 
             {/* CTA Card */}
@@ -383,13 +384,13 @@ export default function Contact(): JSX.Element {
                   Book a complimentary styling call and our team will help you
                   pull together a look.
                 </p>
-                <a
-                  href="/contact"
+                <Link
+                  to="/contact"
                   className="inline-flex items-center gap-3 bg-white text-purple-700 px-6 py-3 rounded-2xl font-semibold hover:bg-purple-50 transition-all duration-200 shadow-lg hover:shadow-xl"
                 >
                   Request styling
                   <div className="w-2 h-2 bg-purple-600 rounded-full"></div>
-                </a>
+                </Link>
               </div>
             </div>
           </aside>
