@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { selectTotalItems } from "../../features/carts/cartSlice";
 import { RootState } from "../../store/store";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   FiShoppingCart,
   FiSearch,
@@ -103,13 +103,13 @@ const Navbar = () => {
           {/* Desktop Navigation Menu */}
           <div className="hidden md:flex items-center space-x-8 flex-1 justify-center">
             {menuItems.map((item) => (
-              <a
+              <Link
                 key={item.name}
-                href={item.href}
+                to={item.href}
                 className="hover:text-purple-400 transition-colors duration-200 font-medium"
               >
                 {item.name}
-              </a>
+              </Link>
             ))}
           </div>
 
