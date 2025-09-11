@@ -1,5 +1,10 @@
 // src/components/Testimonials.tsx
 import React from "react";
+import avatar1 from "../../asset/images/avatar-1.jpg";
+import avatar2 from "../../asset/images/avatar-2.jpg";
+import avatar3 from "../../asset/images/avatar-3.jpg";
+import avatar4 from "../../asset/images/avatar-4.jpg";
+import avatar5 from "../../asset/images/avatar-5.jpg";
 
 type Testimonial = {
   id: string;
@@ -16,21 +21,21 @@ const TestimonialData: Testimonial[] = [
     role: "Fashion Blogger",
     quote:
       "DoFi Closet changed my wardrobe — high quality gowns and speedy delivery!",
-    avatar: "/images/avatar-1.jpg",
+    avatar: avatar1,
   },
   {
     id: "t2",
     name: "Mark O.",
     role: "Stylist",
     quote: "Affordable designers with amazing fit. Highly recommended.",
-    avatar: "/images/avatar-2.jpg",
+    avatar: avatar2,
   },
   {
     id: "t3",
     name: "Chinelo R.",
     role: "Bride",
     quote: "I found my dream dress here. Customer service was top-notch.",
-    avatar: "/images/avatar-3.jpg",
+    avatar: avatar3,
   },
 ];
 
@@ -40,6 +45,7 @@ const Testimonials: React.FC<{
   showTitle?: boolean;
 }> = ({ items = TestimonialData, variant = "modern", showTitle = true }) => {
   if (variant === "modern") {
+    const avatarList = [avatar1, avatar2, avatar3, avatar4, avatar5];
     return (
       <section className="py-20 bg-gradient-to-br from-gray-50 via-white to-purple-50/30">
         <div className="max-w-7xl mx-auto px-6">
@@ -115,10 +121,7 @@ const Testimonials: React.FC<{
                       <div className="relative">
                         <div className="w-16 h-16 rounded-2xl overflow-hidden shadow-lg">
                           <img
-                            src={
-                              testimonial.avatar ||
-                              "https://source.unsplash.com/80x80/?person,face"
-                            }
+                            src={testimonial.avatar}
                             alt={testimonial.name}
                             className={`w-full h-full object-cover ring-4 ${
                               ringColors[index % 3]
@@ -154,13 +157,13 @@ const Testimonials: React.FC<{
             </p>
             <div className="flex justify-center gap-4">
               <div className="flex -space-x-3">
-                {[1, 2, 3, 4, 5].map((i) => (
+                {[0, 1, 2, 3, 4].map((i) => (
                   <div
                     key={i}
                     className="w-10 h-10 rounded-full border-4 border-white shadow-lg overflow-hidden"
                   >
                     <img
-                      src={`https://source.unsplash.com/40x40/?person,face,${i}`}
+                      src={avatarList[i]}
                       alt={`Customer ${i}`}
                       className="w-full h-full object-cover"
                     />

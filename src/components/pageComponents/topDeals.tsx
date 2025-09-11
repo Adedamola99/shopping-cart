@@ -253,7 +253,7 @@ const DealCard: React.FC<{ deal: Deal; index: number }> = ({ deal, index }) => {
         </div>
 
         {/* Action Buttons */}
-        <div className="space-y-3 pt-2">
+        <div className="space-y-3 pt-2 flex flex-col gap-2">
           <button
             onClick={handleAddToCart}
             disabled={isLoading}
