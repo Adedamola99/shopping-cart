@@ -26,7 +26,7 @@ const sampleDeals: Deal[] = [
     price: "$79",
     oldPrice: "$130",
     badge: "40% OFF",
-    image: "/images/gown1.jpg",
+    image: "../../images/gown1.jpg",
   },
   {
     id: "d2",
@@ -34,7 +34,7 @@ const sampleDeals: Deal[] = [
     price: "$49",
     oldPrice: "$89",
     badge: "Limited",
-    image: "../../asset/images/gown2.jpg",
+    image: "../../images/gown2.jpg",
   },
   {
     id: "d3",
@@ -42,14 +42,14 @@ const sampleDeals: Deal[] = [
     price: "$129",
     oldPrice: "$199",
     badge: "Best Seller",
-    image: "../../asset/images/gown3.jpg",
+    image: "../../images/gown3.jpg",
   },
   {
     id: "d4",
     title: "Off-Shoulder Mini",
     price: "$39",
     oldPrice: "$69",
-    image: "../../asset/images/gown4.jpg",
+    image: "../../images/gown4.jpg",
   },
 ];
 
@@ -99,8 +99,7 @@ const DealCard: React.FC<{ deal: Deal; index: number }> = ({ deal, index }) => {
       {/* Image Container */}
       <div className="relative overflow-hidden rounded-t-3xl h-64">
         <img
-          // src={deal.image || "https://via.placeholder.com/400x300"}
-          src={Gown1}
+          src={deal.image || "https://via.placeholder.com/400x300"}
           alt={deal.title}
           className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
         />
