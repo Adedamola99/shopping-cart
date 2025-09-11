@@ -12,6 +12,9 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import SearchResults from "./pages/SearchResults";
 import Deals from "./pages/Deals";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import CookiePolicy from "./pages/CookiePolicy";
+import TermsOfService from "./pages/TermsOfService";
 
 const App = () => {
   return (
@@ -29,6 +32,9 @@ const App = () => {
           <Route path="/cart" element={<Cart />} />
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/cookies" element={<CookiePolicy />} />
+          <Route path="/terms" element={<TermsOfService />} />
           <Route path="/checkout/success" element={<CheckoutSuccess />} />
         </Routes>
       </Router>

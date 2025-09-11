@@ -202,7 +202,7 @@ const Footer: React.FC<FooterProps> = ({
                   </li>
                   <li>
                     <Link
-                      to="#"
+                      to="terms"
                       className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
                     >
                       Terms & Conditions
@@ -210,7 +210,7 @@ const Footer: React.FC<FooterProps> = ({
                   </li>
                   <li>
                     <Link
-                      to="#"
+                      to="/privacy"
                       className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
                     >
                       Privacy Policy
